@@ -1,0 +1,38 @@
+// Constrain native compilation as well as Gradle workers on developer machines.
+allprojects {
+    // Shared workspace packages live outside the app root. Always regenerate the
+    // release bundle so a cached APK cannot retain an earlier catalog or entry.
+    tasks.matching { it.name == 'createBundleReleaseJsAndAssets' }.configureEach {
+        outputs.upToDateWhen { false }
+    }
+    afterEvaluate { project ->
+        if (project.extensions.findByName('android') != null) {
+            project.android.defaultConfig.externalNativeBuild.cmake.arguments(
+                '-DCMAKE_JOB_POOLS=compile=1;link=1',
+                '-DCMAKE_JOB_POOL_COMPILE=compile',
+                '-DCMAKE_JOB_POOL_LINK=link'
+            )
+        }
+    }
+
+    // Optional local mirror populated with artifacts verified against Maven metadata.
+    // Other machines use the normal repositories when this directory is absent.
+    def verifiedMirror = new File(gradle.startParameter.currentDir, '../../../.work/android-maven')
+    if (verifiedMirror.isDirectory()) {
+        repositories {
+            exclusiveContent {
+                forRepository {
+                    maven {
+                        name = 'ChargeVerifiedLocalArtifacts'
+                        url = verifiedMirror.toURI()
+                    }
+                }
+                filter {
+                    includeModule('com.facebook.react', 'react-android')
+                    includeModule('com.facebook.react', 'hermes-android')
+                    includeModule('androidx.documentfile', 'documentfile')
+                }
+            }
+        }
+    }
+}

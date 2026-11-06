@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "currency": "CNY",
+  "moneyUnit": "minor",
+  "defaultTemplateId": null,
+  "defaultMode": "manual",
+  "source": {
+    "salary": "参考表仅用于分类结构；用户确认工资后生成当月一笔收入，类别额度独立设置，百分比以工资计算。"
+  },
+  "templates": [
+    {
+      "id": "salary-allocation",
+      "version": 3,
+      "name": "工资分配",
+      "kind": "salary",
+      "ledgerType": "expense",
+      "baseMinor": null,
+      "period": null,
+      "onOverspend": "save_actual_warn_show_negative",
+      "compensation": "manual_deduct_other_positive_tags",
+      "rows": [
+        {
+          "key": "food",
+          "name": "日常饮食",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "commute",
+          "name": "通勤交通",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "social",
+          "name": "娱乐购物",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "free",
+          "name": "随心花",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "phone",
+          "name": "话费",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "supplies",
+          "name": "洗护日用品",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "medical",
+          "name": "医护",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "utilities",
+          "name": "水电物业",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "insurance",
+          "name": "保险",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "housing",
+          "name": "住房房租",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "clothes",
+          "name": "衣服鞋子",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "electronics",
+          "name": "电子消费",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "travel",
+          "name": "出行旅行",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "gifts",
+          "name": "人情支出",
+          "purpose": "expense_budget",
+          "mode": "fixed",
+          "fixedMinor": null
+        },
+        {
+          "key": "long-term-savings",
+          "name": "净长期储蓄",
+          "purpose": "savings_budget",
+          "mode": "remainder",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

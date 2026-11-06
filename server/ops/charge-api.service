@@ -1,0 +1,25 @@
+[Unit]
+Description=Charge bookkeeping API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=charge_api
+Group=charge_api
+WorkingDirectory=/opt/charge/current
+EnvironmentFile=/etc/charge/database.env
+EnvironmentFile=/etc/charge/api.env
+ExecStart=/usr/bin/node dist/index.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+MemoryMax=384M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+{
+  "name": "charge-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "server",
+    "apps/mobile",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:mobile": "npm run start -w apps/mobile",
+    "dev:web": "npm run web -w apps/mobile",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "node --test tests/*.test.mjs && npm run test -w server",
+    "test:api": "npm run test:integration -w server"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

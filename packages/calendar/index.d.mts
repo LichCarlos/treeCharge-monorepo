@@ -1,0 +1,15 @@
+export type PeriodMode='week'|'month'|'year';
+export type Selection={mode:PeriodMode|'day';anchor:string};
+export type PeriodSelection={mode:PeriodMode;anchor:string};
+export type DateRange={start:string;end:string;endExclusive:string};
+export function parseDay(value:string):Date;
+export function isoDay(date:Date):string;
+export function localToday():string;
+export function addDays(day:string,count:number):string;
+export function monthStart(day:string):string;
+export function monthShift(day:string,delta:number):string;
+export function periodRange(selection:Selection):DateRange;
+export function shiftPeriod<T extends Selection>(selection:T,delta:number):T;
+export function periodLabel(selection:Selection):string;
+export function calendarRows(anchor:string):string[][];
+export function rangeQuery(selection:Selection):string;

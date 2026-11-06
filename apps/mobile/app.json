@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "枝账",
+    "slug": "charge",
+    "version": "0.1.20",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "charge",
+    "android": {
+      "package": "com.charge.personal",
+      "versionCode": 21
+    },
+    "web": {
+      "bundler": "metro",
+      "name": "枝账"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "./plugins/with-local-api.cjs",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
